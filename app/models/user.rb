@@ -15,4 +15,8 @@ class User < ActiveRecord::Base
     FriendRequest.where(requestee_id: self.id)
   end
 
+  def open_season_requests
+    SeasonRequest.where(requestee_id: self.id)
+  end
+
 end

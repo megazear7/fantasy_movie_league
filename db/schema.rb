@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141213131827) do
+ActiveRecord::Schema.define(version: 20141213135541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,10 +58,10 @@ ActiveRecord::Schema.define(version: 20141213131827) do
 
   create_table "season_requests", force: true do |t|
     t.integer "season_id"
-    t.integer "requester",                                                            null: false
-    t.integer "requestee",                                                            null: false
-    t.text    "message",   default: "Hello, would you like to compete in my league?"
-    t.boolean "active",    default: true
+    t.integer "requester_id",                                                            null: false
+    t.integer "requestee_id",                                                            null: false
+    t.text    "message",      default: "Hello, would you like to compete in my league?"
+    t.boolean "active",       default: true
   end
 
   create_table "seasons", force: true do |t|

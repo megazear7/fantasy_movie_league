@@ -1,0 +1,13 @@
+= simple_form_for @season_request do |f|
+  - if @season_request.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@season_request.errors.count, "error")} prohibited this season_request from being saved:"
+      %ul
+        - @season_request.errors.full_messages.each do |msg|
+          %li= msg
+  = f.input :requester_id, as: :hidden, input_html: { value: current_user.id }
+  = f.association :season
+  = f.association :requestee
+  = f.input :message
+  .actions
+    = f.submit 'Save'

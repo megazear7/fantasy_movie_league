@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :season_requests
+
   resources :friend_requests
 
   root 'movies#index'

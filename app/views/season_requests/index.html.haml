@@ -1,0 +1,23 @@
+%h1 Listing season_requests
+
+%table
+  %tr
+    %th Requesting User
+    %th Season
+    %th Message
+    %th
+    %th
+    %th
+
+  - current_user.open_season_requests.each do |season_request|
+    %tr
+      %td= season_request.requester.name
+      %td= season_request.season.name
+      %td= season_request.message
+      %td= link_to 'Show', season_request
+      %td= link_to 'Edit', edit_season_request_path(season_request)
+      %td= link_to 'Destroy', season_request, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Season request', new_season_request_path

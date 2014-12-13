@@ -1,0 +1,15 @@
+%p
+  = @season_request.requester.name
+  is asking 
+  = @season_request.requestee.name
+  to join the
+  = @season_request.season.name
+  season
+%p
+  %div
+    = @season_request.requester.name
+    says:
+  = @season_request.message
+= link_to 'Edit', edit_season_request_path(@season_request)
+\|
+= link_to 'Back', season_requests_path
