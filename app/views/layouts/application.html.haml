@@ -6,23 +6,27 @@
   = javascript_include_tag 'application', 'data-turbolinks-track' => true
   = csrf_meta_tags
 %body
-  %p.notice
-    = notice
-  %p.alert
-    = alert
-  - if current_user
-    %p
-      Logged in as
-      = current_user.name
-    = link_to "Movies", movies_path
-    = link_to "Rosters", rosters_path
-    = link_to "Seasons", seasons_path
-    = link_to "Friends", friends_list_friend_request_path(current_user)
-    = link_to "Friend Requests", friend_requests_path
-    = link_to "Season Requests", season_requests_path
-    = link_to "Logout", destroy_user_session_path, method: :delete
-    = link_to "Edit Account", edit_user_registration_path
-  - else
-    Welcome
-    
-  = yield
+
+  .container
+    .left-menu
+      %span.notice
+        = notice
+      %span.alert
+        = alert
+      - if current_user
+        .menu-item
+          Logged in as
+          = current_user.name
+        = link_to "Movies", movies_path, class: "menu-item"
+        = link_to "Rosters", rosters_path, class: "menu-item"
+        = link_to "Seasons", seasons_path, class: "menu-item"
+        = link_to "Friends", friends_list_friend_request_path(current_user), class: "menu-item"
+        = link_to "Friend Requests", friend_requests_path, class: "menu-item"
+        = link_to "Season Requests", season_requests_path, class: "menu-item"
+        = link_to "Logout", destroy_user_session_path, method: :delete, class: "menu-item"
+        = link_to "Edit Account", edit_user_registration_path, class: "menu-item"
+      - else
+        .menu-item Welcome - please sign in or create an account
+      
+    .right-menu
+      = yield

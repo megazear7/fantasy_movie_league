@@ -4,17 +4,10 @@
   = @season.begin_date
   \-
   = @season.end_date
-
 %h4 Participants
 %table
-  %thead
-    %tr
-      %th Email
   %tbody
     - @season.rosters.each do |roster|
       %tr
-        %td= @roster.user.email
-
-= link_to 'Edit', edit_season_path(@season)
-\|
+        %td= roster.user.name
 = link_to 'Back', seasons_path

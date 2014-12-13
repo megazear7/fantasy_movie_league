@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :rosters
+  has_many :seasons, through: :rosters
   has_and_belongs_to_many :friends,
           class_name: "User",
           join_table: :friendships,
@@ -17,6 +18,10 @@ class User < ActiveRecord::Base
 
   def open_season_requests
     SeasonRequest.where(requestee_id: self.id)
+  end
+
+  def admin?
+    self.admin_level >= 1
   end
 
 end

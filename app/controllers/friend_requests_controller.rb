@@ -68,7 +68,7 @@ class FriendRequestsController < ApplicationController
     user1.friends << user2
     user2.friends << user1
 
-    redirect_to user(current_user.id)
+    redirect_to friends_list_friend_request_path(current_user)
 
     @friend_request.destroy
   end

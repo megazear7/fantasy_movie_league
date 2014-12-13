@@ -13,3 +13,52 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  margin:0px;
+  background: #2238AB url("blue.jpg");
+  background-size: 100%;
+}
+
+.container {
+  height:100vh;
+}
+
+.left-menu {
+  display: inline-block;
+  width: 20%;
+  height: 100%;
+  position: absolute;
+}
+
+.right-menu {
+  display: inline-block;
+  width: 80%;
+  height: 100%;
+  position: absolute;
+  left: 20%;
+}
+
+.menu-item {
+  font-size: 22px;
+  text-shadow: 1px 1px 3px rgb(68, 142, 187);
+  color: black;
+  text-decoration: none;
+  display:block;
+  width: 80%;
+  height: 5%;
+  margin: 2% auto 0%;
+  background: rgba(120, 154, 155, 0.48);
+  padding: 15px;
+  box-shadow: 1px 1px 10px #888888;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  border-color: rgba(51, 61, 161, 1);
+}
+
+.menu-item:hover {
+  box-shadow: 1px 1px 10px rgb(117, 172, 179);
+  background: rgba(100, 161, 163, 0.48);
+  text-shadow: 2px 2px 5px rgb(24, 157, 239);
+}

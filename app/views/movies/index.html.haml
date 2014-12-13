@@ -5,18 +5,18 @@
     %th Name
     %th Release
     %th Box Office
-    %th
-    %th
-    %th
+    - if current_user.admin?
+      %th
+      %th
 
   - @movies.each do |movie|
     %tr
-      %td= movie.name
+      %td= link_to movie.name, movie
       %td= movie.release
       %td= movie.box_office_actual
-      %td= link_to 'Show', movie
-      %td= link_to 'Edit', edit_movie_path(movie)
-      %td= link_to 'Destroy', movie, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      - if current_user.admin?
+        %td= link_to 'Edit', edit_movie_path(movie)
+        %td= link_to 'Destroy', movie, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
