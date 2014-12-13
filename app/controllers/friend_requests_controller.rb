@@ -1,5 +1,5 @@
 class FriendRequestsController < ApplicationController
-  before_action :set_friend_request, only: [:show, :edit, :update, :destroy]
+  before_action :set_friend_request, only: [:show, :edit, :update, :destroy, :accept]
 
   # GET /friend_requests
   # GET /friend_requests.json
@@ -59,6 +59,22 @@ class FriendRequestsController < ApplicationController
       format.html { redirect_to friend_requests_url, notice: 'Friend request was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def accept
+    user1 = User.find(@friend_request.requester.id) 
+    user2 = User.find(@friend_request.requestee.id)
+
+    user1.friends << user2
+    user2.friends << user1
+
+    redirect_to user(current_user.id)
+
+    @friend_request.destroy
+  end
+
+  def friends_list
+    @friends = current_user.friends
   end
 
   private

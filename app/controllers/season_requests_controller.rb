@@ -1,5 +1,5 @@
 class SeasonRequestsController < ApplicationController
-  before_action :set_season_request, only: [:show, :edit, :update, :destroy]
+  before_action :set_season_request, only: [:show, :edit, :update, :destroy, :accept]
 
   # GET /season_requests
   # GET /season_requests.json
@@ -59,6 +59,15 @@ class SeasonRequestsController < ApplicationController
       format.html { redirect_to season_requests_url, notice: 'Season request was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def accept
+    user = User.find(@season_request.requestee.id)
+    roster = user.rosters.create(user_id: user.id, season_id: @season_request.season.id)
+
+    redirect_to edit_roster_path(roster)
+
+    @season_request.destroy
   end
 
   private

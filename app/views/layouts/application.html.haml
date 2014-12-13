@@ -17,6 +17,7 @@
     = link_to "Movies", movies_path
     = link_to "Rosters", rosters_path
     = link_to "Seasons", seasons_path
+    = link_to "Friends", friends_list_friend_request_path(current_user)
     = link_to "Friend Requests", friend_requests_path
     = link_to "Season Requests", season_requests_path
     = link_to "Logout", destroy_user_session_path, method: :delete

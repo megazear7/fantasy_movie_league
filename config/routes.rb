@@ -1,12 +1,22 @@
 Rails.application.routes.draw do
 
-  resources :season_requests
+  resources :season_requests do
+    member do
+      get  :accept
+    end
+  end
 
-  resources :friend_requests
+  resources :friend_requests do
+    member do
+      get  :accept
+      get  :friends_list
+    end
+  end
 
   root 'movies#index'
 
   resources :seasons
+
 
   resources :rosters
 

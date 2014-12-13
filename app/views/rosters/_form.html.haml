@@ -7,7 +7,8 @@
           %li= msg
 
   = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
-  = f.association :season
+  - if params[:action] == 'new'
+    = f.association :season
 
   = f.association :movie_one, prompt: "Choose One"
   = f.association :movie_two, prompt: "Choose One"

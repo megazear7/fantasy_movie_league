@@ -1,0 +1,7 @@
+%h1 Listing friends
+%table
+  - current_user.friends.each do |friend|
+    %tr
+      %td= friend.name
+%br
+= link_to 'New Friend request', new_friend_request_path
