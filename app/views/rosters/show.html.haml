@@ -1,47 +1,54 @@
 %p
   Roster for
-  = @roster.user.email
-  in season
-  = @roster.season.name
+  = @roster.user.name
+  in the season,
+  = "\"" + @roster.season.name + "\""
+%h4 Top Movie Picks:
 %table
   %tbody
     %tr
       %td 1
-      %td= @roster.movie_one.name
+      %td= movie_choice @roster.movie_one
     %tr
       %td 2
-      %td= @roster.movie_two.name
+      %td= movie_choice @roster.movie_two
     %tr
       %td 3
-      %td= @roster.movie_three.name
+      %td= movie_choice @roster.movie_three
     %tr
       %td 4
-      %td= @roster.movie_four.name
+      %td= movie_choice @roster.movie_four
     %tr
       %td 5
-      %td= @roster.movie_five.name
+      %td= movie_choice @roster.movie_five
     %tr
       %td 6
-      %td= @roster.movie_six.name
+      %td= movie_choice @roster.movie_six
     %tr
       %td 7
-      %td= @roster.movie_seven.name
+      %td= movie_choice @roster.movie_seven
     %tr
       %td 8
-      %td= @roster.movie_eight.name
+      %td= movie_choice @roster.movie_eight
     %tr
       %td 9
-      %td= @roster.movie_nine.name
+      %td= movie_choice @roster.movie_nine
     %tr
       %td 10
-      %td= @roster.movie_ten.name
-%p
-  Darkhose Movies:
-  = @roster.darkhorse_one.name
-  ,
-  = @roster.darkhorse_two.name
-  and
-  = @roster.darkhorse_three.name
+      %td= movie_choice @roster.movie_ten
+%h4 Darkhose Movies:
+%table
+  %tbody
+    %tr
+      %td 1
+      %td= movie_choice @roster.darkhorse_one
+    %tr
+      %td 2
+      %td= movie_choice @roster.darkhorse_two
+    %tr
+      %td 3
+      %td= movie_choice @roster.darkhorse_three
+%br 
 = link_to 'Edit', edit_roster_path(@roster)
 \|
 = link_to 'Back', rosters_path

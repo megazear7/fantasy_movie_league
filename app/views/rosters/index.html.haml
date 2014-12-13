@@ -1,21 +1,14 @@
 %h1 Listing rosters
-
 %table
   %tr
     %th Season
     %th Top Movie
     %th
     %th
-
   - current_user.rosters.each do |roster|
     %tr
       %td= link_to roster.season.name, roster
-      - if roster.movie_one
-        %td= roster.movie_one.name
-      - else
-        %td
+      %td= movie_choice roster.movie_one
       %td= link_to 'Edit', edit_roster_path(roster)
-
 %br
-
-= link_to 'New Roster', new_roster_path
+%p You must be invited to a season (or create a season and invite yourself to it) in order to create a roster.
