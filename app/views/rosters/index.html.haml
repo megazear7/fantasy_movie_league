@@ -2,12 +2,16 @@
 
 %table
   %tr
+    %th Season
+    %th Top Movie
     %th
     %th
     %th
 
-  - @rosters.each do |roster|
+  - current_user.rosters.each do |roster|
     %tr
+      %td= roster.season.name
+      %td= roster.movie_one.name
       %td= link_to 'Show', roster
       %td= link_to 'Edit', edit_roster_path(roster)
       %td= link_to 'Destroy', roster, :method => :delete, :data => { :confirm => 'Are you sure?' }

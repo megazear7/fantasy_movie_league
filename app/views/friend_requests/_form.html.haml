@@ -5,6 +5,8 @@
       %ul
         - @friend_request.errors.full_messages.each do |msg|
           %li= msg
-
+  = f.input :requester_id, as: :hidden, input_html: { value: current_user.id }
+  = f.association :requestee
+  = f.input :message
   .actions
     = f.submit 'Save'

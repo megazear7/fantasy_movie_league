@@ -1,3 +1,47 @@
+%p
+  Roster for
+  = @roster.user.email
+  in season
+  = @roster.season.name
+%table
+  %tbody
+    %tr
+      %td 1
+      %td= @roster.movie_one.name
+    %tr
+      %td 2
+      %td= @roster.movie_two.name
+    %tr
+      %td 3
+      %td= @roster.movie_three.name
+    %tr
+      %td 4
+      %td= @roster.movie_four.name
+    %tr
+      %td 5
+      %td= @roster.movie_five.name
+    %tr
+      %td 6
+      %td= @roster.movie_six.name
+    %tr
+      %td 7
+      %td= @roster.movie_seven.name
+    %tr
+      %td 8
+      %td= @roster.movie_eight.name
+    %tr
+      %td 9
+      %td= @roster.movie_nine.name
+    %tr
+      %td 10
+      %td= @roster.movie_ten.name
+%p
+  Darkhose Movies:
+  = @roster.darkhorse_one.name
+  ,
+  = @roster.darkhorse_two.name
+  and
+  = @roster.darkhorse_three.name
 = link_to 'Edit', edit_roster_path(@roster)
 \|
 = link_to 'Back', rosters_path

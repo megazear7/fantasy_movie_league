@@ -70,8 +70,9 @@ class FriendRequestsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def friend_request_params
       params.require(:friend_request).permit(
-        :requester,
-        :requestee
+        :requester_id,
+        :requestee_id,
+        :message
       )
     end
 end

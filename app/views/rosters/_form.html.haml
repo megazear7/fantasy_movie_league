@@ -6,22 +6,22 @@
         - @roster.errors.full_messages.each do |msg|
           %li= msg
 
-  = f.association :user
+  = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
   = f.association :season
 
-  = f.association :movie_one
-  = f.association :movie_two
-  = f.association :movie_three
-  = f.association :movie_four
-  = f.association :movie_five
-  = f.association :movie_six
-  = f.association :movie_seven
-  = f.association :movie_eight
-  = f.association :movie_nine
-  = f.association :movie_ten
-  = f.association :darkhorse_one
-  = f.association :darkhorse_two
-  = f.association :darkhorse_three
+  = f.association :movie_one, prompt: "Choose One"
+  = f.association :movie_two, prompt: "Choose One"
+  = f.association :movie_three, prompt: "Choose One"
+  = f.association :movie_four, prompt: "Choose One"
+  = f.association :movie_five, prompt: "Choose One"
+  = f.association :movie_six, prompt: "Choose One"
+  = f.association :movie_seven, prompt: "Choose One"
+  = f.association :movie_eight, prompt: "Choose One"
+  = f.association :movie_nine, prompt: "Choose One"
+  = f.association :movie_ten, prompt: "Choose One"
+  = f.association :darkhorse_one, prompt: "Choose One"
+  = f.association :darkhorse_two, prompt: "Choose One"
+  = f.association :darkhorse_three, prompt: "Choose One"
  
   .actions
     = f.submit 'Save'

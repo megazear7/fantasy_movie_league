@@ -2,12 +2,16 @@
 
 %table
   %tr
+    %th Requesting User
+    %th Message
     %th
     %th
     %th
 
-  - @friend_requests.each do |friend_request|
+  - current_user.open_friend_requests.each do |friend_request|
     %tr
+      %td= friend_request.requester.name
+      %td= friend_request.message
       %td= link_to 'Show', friend_request
       %td= link_to 'Edit', edit_friend_request_path(friend_request)
       %td= link_to 'Destroy', friend_request, :method => :delete, :data => { :confirm => 'Are you sure?' }

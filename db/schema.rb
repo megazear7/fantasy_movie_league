@@ -11,16 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141213034643) do
+ActiveRecord::Schema.define(version: 20141213131827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "friend_requests", force: true do |t|
-    t.integer "requester",                                                   null: false
-    t.integer "requestee",                                                   null: false
-    t.text    "message",   default: "Hello, would you like to share stats?"
-    t.boolean "active",    default: true
+    t.integer "requester_id",                                                   null: false
+    t.integer "requestee_id",                                                   null: false
+    t.text    "message",      default: "Hello, would you like to share stats?"
+    t.boolean "active",       default: true
   end
 
   create_table "friendships", force: true do |t|
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 20141213034643) do
     t.integer  "admin_level",            default: 0,  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
