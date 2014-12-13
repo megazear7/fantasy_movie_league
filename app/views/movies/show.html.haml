@@ -1,6 +1,13 @@
-%p#notice= notice
-
-
+%h3
+  Name: 
+  = @movie.name
+%p
+  %div
+    Release Date: 
+    = @movie.release
+  %div
+    Box Office: 
+    = @movie.box_office_actual
 = link_to 'Edit', edit_movie_path(@movie)
 \|
 = link_to 'Back', movies_path

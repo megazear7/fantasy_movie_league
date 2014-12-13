@@ -1,4 +1,4 @@
-= form_for @roster do |f|
+= simple_form_for @roster do |f|
   - if @roster.errors.any?
     #error_explanation
       %h2= "#{pluralize(@roster.errors.count, "error")} prohibited this roster from being saved:"
@@ -6,5 +6,22 @@
         - @roster.errors.full_messages.each do |msg|
           %li= msg
 
+  = f.association :user
+  = f.association :season
+
+  = f.association :movie_one
+  = f.association :movie_two
+  = f.association :movie_three
+  = f.association :movie_four
+  = f.association :movie_five
+  = f.association :movie_six
+  = f.association :movie_seven
+  = f.association :movie_eight
+  = f.association :movie_nine
+  = f.association :movie_ten
+  = f.association :darkhorse_one
+  = f.association :darkhorse_two
+  = f.association :darkhorse_three
+ 
   .actions
     = f.submit 'Save'

@@ -69,6 +69,22 @@ class RostersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def roster_params
-      params[:roster]
+      params.require(:roster).permit(
+        :user_id,
+        :season_id,
+        :movie_one_id,
+        :movie_two_id,
+        :movie_three_id,
+        :movie_four_id,
+        :movie_five_id,
+        :movie_six_id,
+        :movie_seven_id,
+        :movie_eight_id,
+        :movie_nine_id,
+        :movie_ten_id,
+        :darkhorse_one_id,
+        :darkhorse_two_id,
+        :darkhorse_three_id
+      )
     end
 end

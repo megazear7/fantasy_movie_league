@@ -1,10 +1,17 @@
-= form_for @movie do |f|
+= simple_form_for @movie do |f|
   - if @movie.errors.any?
     #error_explanation
       %h2= "#{pluralize(@movie.errors.count, "error")} prohibited this movie from being saved:"
       %ul
         - @movie.errors.full_messages.each do |msg|
           %li= msg
-
+  - if params[:action] == 'new'
+    = f.input :name
+    = f.input :release
+  - if params[:action] == 'edit'
+    = f.input :box_office_actual
+    %h6 Name and release date should never need changed. But if you need to you can change them here...
+    = f.input :name
+    = f.input :release
   .actions
     = f.submit 'Save'
