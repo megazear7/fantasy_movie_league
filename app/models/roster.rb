@@ -19,13 +19,15 @@ class Roster < ActiveRecord::Base
 
   def score
     points = 0
-    if not self.finalized # TODO the not needs removed
+    if self.finalized and not self.season.has_ended # TODO the not needs removed
       (1..10).each do |i|
         points += points_for i
       end
       points += 1 if appears darkhorse_one
       points += 1 if appears darkhorse_two
       points += 1 if appears darkhorse_three
+    elsif self.season.has_ended
+      points = self.final_score
     end
     points
   end
