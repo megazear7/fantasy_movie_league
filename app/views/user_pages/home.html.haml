@@ -1,0 +1,43 @@
+%h3
+  = @user.name + "'s"
+  Achievments
+%div
+  Seasons Won:
+  = @user.seasons_won
+%div
+  Total Points Gained:
+  = @user.total_points
+%div
+  Best Finished Season Score
+  = @user.best_finished_season_score
+%h4 Active and ongoing seasons:
+- if @user.active_ongoing_seasons.any?
+  %table
+    - @user.active_ongoing_seasons.each do |season|
+      %tr
+        %td= link_to season.name, season
+        %td= season.roster_for(@user).score
+- else
+  %p None
+%br
+%h4 Not Started Seasons: 
+- if @user.unstarted_seasons.any?
+  %table
+    - @user.unstarted_seasons.each do |season|
+      %tr
+        %td= link_to season.name, season
+        %td= season.roster_for(@user).score
+- else
+  %p None
+%br
+%h4 Past Seasons:
+- if @user.past_seasons.any?
+  %table
+    - @user.past_seasons.each do |season|
+      %tr
+        %td= link_to season.name, season
+        %td= season.roster_for(@user).score
+- else
+  %p None
+
+  

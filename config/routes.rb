@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'movies#index'
+  root 'user_pages#home'
 
   resources :seasons do
     member do
@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   end
 
   resources :movies
+
+  get '/users_trophies/:id' => 'user_pages#home', as: :users_trophies
 
   devise_for :users
 
