@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :rosters
   has_many :seasons, through: :rosters
+  has_many :seasons_i_run, class_name: "Season", foreign_key: "user_id"
   has_and_belongs_to_many :friends,
           class_name: "User",
           join_table: :friendships,

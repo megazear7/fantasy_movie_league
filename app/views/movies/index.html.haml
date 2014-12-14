@@ -9,7 +9,7 @@
       %th
       %th
 
-  - @movies.each do |movie|
+  - Movie.ordered_movies_all_time.each do |movie|
     %tr
       %td= link_to movie.name, movie
       %td= movie.release

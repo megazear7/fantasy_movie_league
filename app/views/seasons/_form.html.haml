@@ -5,6 +5,7 @@
       %ul
         - @season.errors.full_messages.each do |msg|
           %li= msg
+  = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
   = f.input :name
   = f.input :begin_date
   = f.input :end_date

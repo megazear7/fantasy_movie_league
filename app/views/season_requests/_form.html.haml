@@ -6,7 +6,7 @@
         - @season_request.errors.full_messages.each do |msg|
           %li= msg
   = f.input :requester_id, as: :hidden, input_html: { value: current_user.id }
-  = f.association :season
+  = f.association :season, collection: Season.where(user_id: current_user.id, finalized: false)
   = f.association :requestee
   = f.input :message
   .actions
