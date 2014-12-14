@@ -4,12 +4,15 @@
     %th Name
     %th Begin Date
     %th End Date
-    %th
+    %th Finalized?
+    %th Ended?
   - current_user.seasons.each do |season|
     %tr
       %td= link_to season.name, season
       %td= season.begin_date
       %td= season.end_date
+      %td= season.finalized
+      %td= season.has_ended
 %br
 %h4 Seasons you are managing:
 %table
@@ -17,11 +20,14 @@
     %th Name
     %th Begin Date
     %th End Date
-    %th
+    %th Finalized?
+    %th Ended?
   - current_user.seasons_i_run.each do |season|
     %tr
       %td= link_to season.name, season
       %td= season.begin_date
       %td= season.end_date
+      %td= season.finalized
+      %td= season.has_ended
 %br
 = link_to 'New Season', new_season_path

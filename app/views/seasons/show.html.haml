@@ -4,10 +4,34 @@
   = @season.begin_date
   \-
   = @season.end_date
+%p
+  Finalized:
+  = @season.finalized
+%p
+  Ended:
+  = @season.has_ended
 %h4 Participants
 %table
+  %thead
+    %tr
+      %th Name
+      %th Score
+      %th Roster
+      %th Finalized?
   %tbody
     - @season.rosters.each do |roster|
       %tr
         %td= roster.user.name
+        - if @season.finalized or roster.user == current_user
+          %td= roster.score
+          %td= link_to "View Roster", roster
+        - else
+          %td ???
+          %td ???
+        %td= roster.finalized
 = link_to 'Back', seasons_path
+- if not @season.finalized and @season.user == current_user
+  = link_to 'Finalize', finalize_season_path
+  = link_to 'Force Finalize', force_finalize_season_path, :data => { :confirm => 'Are you sure? This will delete non finalized rosters' }
+- if not @season.has_ended and @season.finalized and @season.user == current_user
+  = link_to 'End This Season', end_season_path

@@ -62,12 +62,15 @@ class SeasonRequestsController < ApplicationController
   end
 
   def accept
-    user = User.find(@season_request.requestee.id)
-    roster = user.rosters.create(user_id: user.id, season_id: @season_request.season.id)
+    if not @season_request.season.finalized
+      user = User.find(@season_request.requestee.id)
+      roster = user.rosters.create(user_id: user.id, season_id: @season_request.season.id)
 
-    redirect_to edit_roster_path(roster)
-
-    @season_request.destroy
+      @season_request.destroy
+      redirect_to edit_roster_path(roster)
+    else
+      redirect_to @season_request.season
+    end
   end
 
   private

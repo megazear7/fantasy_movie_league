@@ -3,12 +3,14 @@
   %tr
     %th Season
     %th Top Movie
-    %th
-    %th
+    %th Edit
   - current_user.rosters.each do |roster|
     %tr
       %td= link_to roster.season.name, roster
       %td= movie_choice roster.movie_one
-      %td= link_to 'Edit', edit_roster_path(roster)
+      - if roster.finalized
+        %td already finalized
+      - else
+        %td= link_to 'Edit', edit_roster_path(roster)
 %br
 %p You must be invited to a season (or create a season and invite yourself to it) in order to create a roster.

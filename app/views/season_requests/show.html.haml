@@ -10,6 +10,8 @@
     = @season_request.requester.name
     says:
   = @season_request.message
-= link_to 'Edit', edit_season_request_path(@season_request)
+%td= link_to 'Accept', accept_season_request_path(@season_request)
+\|
+%td= link_to 'Ignore', @season_request, :method => :delete, :data => { :confirm => 'Are you sure?' }
 \|
 = link_to 'Back', season_requests_path

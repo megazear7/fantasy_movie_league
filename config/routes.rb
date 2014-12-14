@@ -15,10 +15,19 @@ Rails.application.routes.draw do
 
   root 'movies#index'
 
-  resources :seasons
+  resources :seasons do
+    member do
+      get  :end
+      get  :finalize
+      get  :force_finalize
+    end
+  end
 
-
-  resources :rosters
+  resources :rosters do
+    member do
+      get  :finalize
+    end
+  end
 
   resources :movies
 

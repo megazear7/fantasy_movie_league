@@ -1,5 +1,5 @@
 class SeasonsController < ApplicationController
-  before_action :set_season, only: [:show, :edit, :update, :destroy]
+  before_action :set_season, only: [:show, :edit, :update, :destroy, :end, :finalize, :force_finalize]
 
   # GET /seasons
   # GET /seasons.json
@@ -61,6 +61,43 @@ class SeasonsController < ApplicationController
     end
   end
 
+  def end
+    @season.rosters.each do |roster|
+      roster.final_score = roster.score
+      roster.save
+    end
+    @season.has_ended = true
+    @season.save
+    redirect_to @season
+  end
+
+  def finalize
+    should_finalize = true
+    @season.rosters.each do |roster|
+      if not roster.finalized
+        should_finalize = false
+      end
+    end
+
+    if should_finalize
+      @season.finalized = true
+      @season.save
+    end
+
+    redirect_to @season
+  end
+
+  def force_finalize
+    @season.rosters.each do |roster|
+      if not roster.finalized
+        roster.destroy
+      end
+    end
+    @season.finalized = true
+    @season.save
+    redirect_to @season
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_season
@@ -70,6 +107,8 @@ class SeasonsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def season_params
       params.require(:season).permit(
+        :finalized,
+        :has_ended,
         :user_id,
         :begin_date,
         :end_date,

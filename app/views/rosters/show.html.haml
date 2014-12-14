@@ -2,7 +2,7 @@
   Roster for
   = @roster.user.name
   in the season,
-  = "\"" + @roster.season.name + "\""
+  = link_to @roster.season.name, @roster.season
 %p 
   Score:
   = @roster.score
@@ -52,6 +52,9 @@
       %td 3
       %td= movie_choice @roster.darkhorse_three
 %br 
-= link_to 'Edit', edit_roster_path(@roster)
-\|
+- if not @roster.finalized
+  = link_to 'Finalize', finalize_roster_path(@roster)
+  \|
+  = link_to 'Edit', edit_roster_path(@roster)
+  \|
 = link_to 'Back', rosters_path

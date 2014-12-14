@@ -1,5 +1,5 @@
 class RostersController < ApplicationController
-  before_action :set_roster, only: [:show, :edit, :update, :destroy]
+  before_action :set_roster, only: [:show, :edit, :update, :destroy, :finalize]
 
   # GET /rosters
   # GET /rosters.json
@@ -61,6 +61,26 @@ class RostersController < ApplicationController
     end
   end
 
+  def finalize
+    if not @roster.movie_one.nil? and
+       not @roster.movie_two.nil? and
+       not @roster.movie_three.nil? and
+       not @roster.movie_four.nil? and
+       not @roster.movie_five.nil? and
+       not @roster.movie_six.nil? and
+       not @roster.movie_seven.nil? and
+       not @roster.movie_eight.nil? and
+       not @roster.movie_nine.nil? and
+       not @roster.movie_ten.nil? and
+       not @roster.darkhorse_one.nil? and
+       not @roster.darkhorse_two.nil? and
+       not @roster.darkhorse_three.nil?
+       @roster.finalized = true
+       @roster.save
+    end
+    redirect_to @roster
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_roster
@@ -70,6 +90,8 @@ class RostersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def roster_params
       params.require(:roster).permit(
+        :finalized,
+        :final_score,
         :user_id,
         :season_id,
         :movie_one_id,
