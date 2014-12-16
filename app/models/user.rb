@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
           join_table: :friendships,
           foreign_key: :user_id,
           association_foreign_key: :friend_user_id
+  validates_uniqueness_of :name
 
   def open_friend_requests
     FriendRequest.where(requestee_id: self.id)
@@ -54,11 +55,19 @@ class User < ActiveRecord::Base
   end
 
   def best_finished_season
-    self.rosters.order("final_score DESC")[0].season
+    if self.rosters.exists?
+      self.rosters.order("final_score DESC")[0].season
+    else
+      nil
+    end
   end
 
   def best_finished_season_score
-    self.rosters.order("final_score DESC")[0].score
+    if self.rosters.exists?
+      self.rosters.order("final_score DESC")[0].score
+    else
+      0
+    end
   end
 
 

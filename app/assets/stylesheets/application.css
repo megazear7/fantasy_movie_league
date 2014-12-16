@@ -14,9 +14,9 @@
  *= require_self
  */
 
-body {
+html {
   margin:0px;
-  background: #2238AB url("blue.jpg");
+  background: #EAEAEA url("fancy_white.jpg");
   background-size: 100%;
 }
 
