@@ -1,7 +1,7 @@
-%h1 Listing friends
+%h1 Your Friends
 %table
   - current_user.friends.each do |friend|
     %tr
       %td= link_to friend.name, users_trophies_path(id: friend.id)
 %br
-= link_to 'New Friend request', new_friend_request_path
+= link_to 'New Friend request', new_friend_request_path, class: "btn-link"

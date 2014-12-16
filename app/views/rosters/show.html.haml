@@ -53,8 +53,8 @@
       %td= movie_choice @roster.darkhorse_three
 %br 
 - if not @roster.finalized
-  = link_to 'Finalize', finalize_roster_path(@roster)
+  = link_to 'Finalize', finalize_roster_path(@roster), class: "btn-link"
   \|
-  = link_to 'Edit', edit_roster_path(@roster)
+  = link_to 'Edit', edit_roster_path(@roster), class: "btn-link"
   \|
-= link_to 'Back', rosters_path
+= link_to 'Back', rosters_path, class: "btn-link"

@@ -9,5 +9,6 @@
   = f.association :season, collection: Season.where(user_id: current_user.id, finalized: false, has_ended: false)
   = f.association :requestee
   = f.input :message
+  %br
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', class: "btn-link"

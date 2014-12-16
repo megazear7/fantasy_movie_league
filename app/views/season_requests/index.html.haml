@@ -1,22 +1,23 @@
 %h1 Listing season_requests
-
-%table
-  %tr
-    %th Requesting User
-    %th Season
-    %th Message
-    %th
-    %th
-    %th
-
-  - current_user.open_season_requests.each do |season_request|
+- if not current_user.open_season_requests.empty?
+  %table
     %tr
-      %td= season_request.requester.name
-      %td= season_request.season.name
-      %td= season_request.message
-      %td= link_to 'Accept', accept_season_request_path(season_request)
-      %td= link_to 'Ignore', season_request, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %th Requesting User
+      %th Season
+      %th Message
+      %th
+      %th
+      %th
 
+    - current_user.open_season_requests.each do |season_request|
+      %tr
+        %td= season_request.requester.name
+        %td= season_request.season.name
+        %td= season_request.message
+        %td= link_to 'Accept', accept_season_request_path(season_request)
+        %td= link_to 'Ignore', season_request, :method => :delete, :data => { :confirm => 'Are you sure?' }
+- else
+  No Open Season Requests
 %br
-
-= link_to 'New Season request', new_season_request_path
+%br
+= link_to 'New Season request', new_season_request_path, class: "btn-link"

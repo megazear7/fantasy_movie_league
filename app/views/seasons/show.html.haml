@@ -29,9 +29,9 @@
           %td ???
           %td ???
         %td= roster.finalized
-= link_to 'Back', seasons_path
+= link_to 'Back', seasons_path, class: "btn-link"
 - if not @season.finalized and @season.user == current_user
-  = link_to 'Finalize', finalize_season_path
-  = link_to 'Force Finalize', force_finalize_season_path, :data => { :confirm => 'Are you sure? This will delete non finalized rosters' }
+  = link_to 'Finalize', finalize_season_path, class: "btn-link"
+  = link_to 'Force Finalize', force_finalize_season_path, :data => { :confirm => 'Are you sure? This will delete non finalized rosters' }, class: "btn-link"
 - if not @season.has_ended and @season.finalized and @season.user == current_user
-  = link_to 'End This Season', end_season_path
+  = link_to 'End This Season', end_season_path, class: "btn-link"

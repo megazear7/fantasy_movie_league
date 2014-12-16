@@ -14,14 +14,19 @@
  *= require_self
  */
 
-html {
+body {
   margin:0px;
+}
+
+html {
   background: #EAEAEA url("fancy_white.jpg");
   background-size: 100%;
+  overflow: hidden;
 }
 
 .container {
   height:100vh;
+  overflow: hidden;
 }
 
 .left-menu {
@@ -33,10 +38,19 @@ html {
 
 .right-menu {
   display: inline-block;
-  width: 80%;
-  height: 100%;
+  width: 75%;
+  height: 89%;
   position: absolute;
   left: 20%;
+  top: 1%;
+  background: rgba(100,120,60,0.5);
+  padding: 2%;
+  background: rgba(120, 154, 155, 0.48);
+  box-shadow: 1px 1px 10px #888888;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  border-color: rgba(51, 61, 161, 1);
 }
 
 .menu-item {
@@ -58,7 +72,56 @@ html {
 }
 
 .menu-item:hover {
-  box-shadow: 1px 1px 10px rgb(117, 172, 179);
-  background: rgba(100, 161, 163, 0.48);
+  box-shadow: 1px 1px 10px rgb(52, 193, 211);
+  background: rgba(131, 210, 213, 0.48);
   text-shadow: 2px 2px 5px rgb(24, 157, 239);
+}
+
+a.active {
+  box-shadow: 1px 1px 10px rgb(43, 207, 228) !important;
+  background: rgba(68, 199, 203, 0.48) !important;
+  text-shadow: 2px 2px 5px rgb(24, 157, 239) !important;
+  cursor: default;
+}
+
+.btn-link:hover {
+  background: rgba(0, 197, 255, 0.48);
+  box-shadow: 3px 3px 5px #275A84;
+  color: rgb(3, 4, 47);
+}
+
+.btn-link {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: inline-block;
+  background: rgba(42, 221, 226, 0.48);
+  padding: 6px;
+  box-shadow: 3px 3px 5px #7B7B90;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  border-color: rgba(51, 61, 161, 1);
+  text-decoration: none;
+  color: rgb(15, 17, 132);
+  font-size: 15px;
+}
+
+input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focus {
+  outline:none;
+  box-shadow: 0px 0px 10px rgb(0, 148, 255);
+}
+
+input[type="email"]:hover, input[type="password"]:hover, input[type="text"]:hover {
+  outline:none;
+  border-color: rgb(0, 148, 255);
+}
+
+input[type="email"], input[type="password"], input[type="text"] {
+  outline:none;
+  width: 200px;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px #888888;
+  border-width: 1px;
 }
