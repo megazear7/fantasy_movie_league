@@ -153,3 +153,14 @@ td, th {
 thead tr {
   background-color: rgba(58, 132, 142, 0.5) !important;
 }
+
+.btn-to-link:hover {
+  cursor: pointer;
+}
+
+.btn-to-link {
+  background-color: rgba(0, 0, 0, 0) !important;
+  border-width: 0px;
+  color: rgb(37, 59, 211);
+  text-decoration: underline;
+}

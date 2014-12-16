@@ -8,4 +8,8 @@ class UserPagesController < ApplicationController
     end
   end
 
+  def index
+    @friend_request = FriendRequest.new
+  end
+
 end

@@ -21,6 +21,7 @@
         = active_link_to "Friends", friends_list_friend_request_path(current_user), class: "menu-item"
         = active_link_to "Friend Requests", friend_requests_path, class: "menu-item"
         = active_link_to "Season Requests", season_requests_path, class: "menu-item"
+        = active_link_to "All Users", users_index_path, class: "menu-item"
         = active_link_to "Logout", destroy_user_session_path, method: :delete, class: "menu-item"
         = active_link_to "Edit Account", edit_user_registration_path, class: "menu-item"
       - else

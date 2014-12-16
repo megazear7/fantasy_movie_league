@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   resources :movies
 
   get '/users_trophies/:id' => 'user_pages#home', as: :users_trophies
+  get '/users' => 'user_pages#index', as: :users_index
 
   devise_for :users
 
