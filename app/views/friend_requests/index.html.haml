@@ -1,18 +1,20 @@
 %h1 Unanswered Friend Requests
 - if not current_user.open_friend_requests.empty?
   %table
-    %tr
-      %th Requesting User
-      %th Message
-      %th
-      %th
-      %th
-    - current_user.open_friend_requests.each do |friend_request|
+    %thead
       %tr
-        %td= friend_request.requester.name
-        %td= friend_request.message
-        %td= link_to 'Accept', accept_friend_request_path(friend_request)
-        %td= link_to 'Ignore', friend_request, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %th Requesting User
+        %th Message
+        %th
+        %th
+        %th
+    %tbody
+      - current_user.open_friend_requests.each do |friend_request|
+        %tr
+          %td= friend_request.requester.name
+          %td= friend_request.message
+          %td= link_to 'Accept', accept_friend_request_path(friend_request)
+          %td= link_to 'Ignore', friend_request, :method => :delete, :data => { :confirm => 'Are you sure?' }
 - else
   No Friend Requests
 %br

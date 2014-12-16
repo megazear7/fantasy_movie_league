@@ -28,7 +28,7 @@ class SeasonRequestsController < ApplicationController
 
     respond_to do |format|
       if @season_request.save
-        format.html { redirect_to @season_request, notice: 'Season request was successfully created.' }
+        format.html { redirect_to season_requests_path, notice: 'Season request was successfully created.' }
         format.json { render :show, status: :created, location: @season_request }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class SeasonRequestsController < ApplicationController
   def update
     respond_to do |format|
       if @season_request.update(season_request_params)
-        format.html { redirect_to @season_request, notice: 'Season request was successfully updated.' }
+        format.html { redirect_to season_requests_path, notice: 'Season request was successfully updated.' }
         format.json { render :show, status: :ok, location: @season_request }
       else
         format.html { render :edit }

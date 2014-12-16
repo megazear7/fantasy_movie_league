@@ -1,16 +1,18 @@
-%h1 Listing rosters
+%h1 Listing Rosters
 %table
-  %tr
-    %th Season
-    %th Top Movie
-    %th Edit
-  - current_user.rosters.each do |roster|
+  %thead
     %tr
-      %td= link_to roster.season.name, roster
-      %td= movie_choice roster.movie_one
-      - if roster.finalized
-        %td already finalized
-      - else
-        %td= link_to 'Edit', edit_roster_path(roster)
+      %th Season
+      %th Top Movie
+      %th Edit
+  %tbody
+    - current_user.rosters.each do |roster|
+      %tr
+        %td= link_to roster.season.name, roster
+        %td= movie_choice roster.movie_one
+        - if roster.finalized
+          %td already finalized
+        - else
+          %td= link_to 'Edit', edit_roster_path(roster)
 %br
 %p You must be invited to a season (or create a season and invite yourself to it) in order to create a roster.

@@ -7,6 +7,5 @@
     = @friend_request.requester.name
     says:
   = @friend_request.message
-= link_to 'Edit', edit_friend_request_path(@friend_request)
-\|
-= link_to 'Back', friend_requests_path
+= link_to 'Edit', edit_friend_request_path(@friend_request), class: "btn-link"
+= link_to 'Back', friend_requests_path, class: "btn-link"

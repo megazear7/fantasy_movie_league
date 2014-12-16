@@ -1,19 +1,21 @@
-%h1 Listing movies
+%h1 Listing Movies
 %table
-  %tr
-    %th Name
-    %th Release
-    %th Box Office
-    - if current_user.admin?
-      %th
-      %th
-  - Movie.ordered_movies_all_time.each do |movie|
+  %thead
     %tr
-      %td= link_to movie.name, movie
-      %td= movie.release
-      %td= movie.box_office_actual
+      %th Name
+      %th Release
+      %th Box Office
       - if current_user.admin?
-        %td= link_to 'Edit', edit_movie_path(movie)
-        %td= link_to 'Destroy', movie, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %th
+        %th
+  %tbody
+    - Movie.ordered_movies_all_time.each do |movie|
+      %tr
+        %td= link_to movie.name, movie
+        %td= movie.release
+        %td= movie.box_office_actual
+        - if current_user.admin?
+          %td= link_to 'Edit', edit_movie_path(movie)
+          %td= link_to 'Destroy', movie, :method => :delete, :data => { :confirm => 'Are you sure?' }
 %br
 = link_to 'New Movie', new_movie_path, class: "btn-link"
