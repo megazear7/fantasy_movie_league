@@ -69,43 +69,59 @@ class User < ActiveRecord::Base
       0
     end
   end
-
-
+  
+  def won? season
+    winning_score = season.rosters.maximum("final_score")
+    score = self.rosters.find_by("season_id = ?", season.id).score
+    score == winning_score ? true : false
+  end
 
   def self.most_6_month_seasons_finished
-    {"Test User A" => 5, "Test User B" => 5, "Test User C" => 4, "Test User D" => 4, "Test User E" => 4, "Test User F" => 3, "Test User G" => 3}
+    User.joins(:rosters => :season).where("seasons.end_date - seasons.begin_date > 5").where("seasons.has_ended = true").group("rosters.user_id").order("count_all DESC").count
   end
 
   def self.most_6_month_seasons_won
-    {"Test User A" => 5, "Test User B" => 4, "Test User E" => 4, "Test User C" => 3, "Test User F" => 3}
+    tmp = {}
+    User.all.each do |user|
+      tmp[user.id] = 0
+      user.seasons.where("end_date - begin_date > 5").where("seasons.has_ended = true").each do |season|
+        # TODO is this user.won? method working?
+        if user.won? season
+          tmp[user.id] += 1 
+        end
+      end
+    end
+    tmp.delete_if {|id, score| score == 0 }
+    tmp.sort_by { |id, score| -score }
   end
 
   def self.high_score_6_month_season
-    {"Test User A" => 55, "Test User B" => 53, "Test User C" => 52, "Test User D" => 51, "Test User E" => 50}
+    {1=> 55, 2=> 53, 3=> 52, 4=> 51, 5=> 50}
   end
 
   def self.most_points
-    {"Test User A" => 345, "Test User B" => 343, "Test User C" => 336, "Test User D" => 334, "Test User E" => 332}
+    {1=> 345, 2=> 343, 3=> 336, 4=> 334, 5=> 332}
   end
 
   def self.single_season_score_this_year
-    {"Test User A" => 55, "Test User B" => 53, "Test User C" => 52, "Test User D" => 51, "Test User E" => 50}
+    {2=> 55, 1=> 53, 5=> 52, 4=> 51, 3=> 50}
   end
 
   def self.single_6_month_season_score_this_year
-    {"Test User A" => 55, "Test User B" => 53, "Test User C" => 52, "Test User D" => 51, "Test User E" => 50}
+    {5=> 55, 4=> 53, 1=> 52, 2=> 51, 3=> 50}
   end
 
   def self.seasons_finished
-    {"Test User A" => 17, "Test User B" => 16, "Test User C" => 16, "Test User D" => 14, "Test User E" => 11}
+    User.joins(:rosters => :season).where("seasons.has_ended = true").group("rosters.user_id").order("count_all DESC").count
   end
 
   def self.seasons_won
-    {"Test User A" => 13, "Test User B" => 12, "Test User C" => 12, "Test User D" => 8, "Test User E" => 8}
+    {2 => 13, 1 => 12, 4 => 12, 5 => 8, 3 => 8}
   end
 
   def self.highest_score
-    {"Test User A" => 55, "Test User B" => 53, "Test User C" => 52, "Test User D" => 51, "Test User E" => 50}
+    ret = {5 => 55, 3 => 53, 4 => 52, 1 => 51, 2 => 50}
+    return ret
   end
 
 

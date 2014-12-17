@@ -5,8 +5,8 @@
       %th User
       %th Score
   %tbody
-    - users.each_with_index do |(name, score), index|
+    - users.each_with_index do |(user_id, score), index|
       %tr
         %td= index+1
-        %td= name
+        %td= User.find(user_id).name
         %td= score
