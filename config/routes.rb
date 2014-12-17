@@ -33,6 +33,7 @@ Rails.application.routes.draw do
 
   get '/users_trophies/:id' => 'user_pages#home', as: :users_trophies
   get '/users' => 'user_pages#index', as: :users_index
+  get '/leader_boards' => 'user_pages#leader_boards', as: :leader_boards
 
   devise_for :users
 

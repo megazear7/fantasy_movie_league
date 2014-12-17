@@ -33,5 +33,10 @@
 - if not @season.finalized and @season.user == current_user
   = link_to 'Finalize', finalize_season_path, class: "btn-link"
   = link_to 'Force Finalize', force_finalize_season_path, :data => { :confirm => 'Are you sure? This will delete non finalized rosters' }, class: "btn-link"
-- if not @season.has_ended and @season.finalized and @season.user == current_user
+- else
+  %span.btn-link-inactive Finalize
+  %span.btn-link-inactive Force Finalize
+- if not @season.has_ended and @season.finalized and @season.user == current_user and Date.today > @season.end_date
   = link_to 'End This Season', end_season_path, class: "btn-link"
+- else
+  %span.btn-link-inactive End This Season

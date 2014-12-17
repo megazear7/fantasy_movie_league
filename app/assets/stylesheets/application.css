@@ -112,6 +112,23 @@ a.active {
   font-size: 15px;
 }
 
+.btn-link-inactive {
+  outline: none;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: inline-block;
+  background: rgba(38, 229, 234, 0.18);
+  padding: 6px;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  border-color: rgba(51, 61, 161, 0.25);
+  text-decoration: none;
+  color: rgba(15, 17, 132, 0.29);
+  font-size: 15px;
+  cursor: default;
+}
+
 input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focus {
   outline:none;
   box-shadow: 0px 0px 10px rgb(0, 148, 255);
@@ -163,4 +180,17 @@ thead tr {
   border-width: 0px;
   color: rgb(37, 59, 211);
   text-decoration: underline;
+}
+
+table.leaderboard {
+  display:inline;
+}
+
+span.leaderboard {
+  display: inline-block;
+  margin: 0px 50px 20px;
+  width: 250px;
+  height: 250px;
+  overflow-y: scroll;
+  background: rgba(19, 127, 148, 0.38);
 }

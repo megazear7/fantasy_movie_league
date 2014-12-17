@@ -69,7 +69,8 @@ class SeasonRequestsController < ApplicationController
       @season_request.destroy
       redirect_to edit_roster_path(roster)
     else
-      redirect_to @season_request.season
+      @season_request.destroy
+      redirect_to @season_request.season, notice: 'You cannot join that season, it has already started'
     end
   end
 

@@ -62,13 +62,17 @@ class SeasonsController < ApplicationController
   end
 
   def end
-    @season.rosters.each do |roster|
-      roster.final_score = roster.score
-      roster.save
+    if Date.today > @season.end_date
+      @season.rosters.each do |roster|
+        roster.final_score = roster.score
+        roster.save
+      end
+      @season.has_ended = true
+      @season.save
+      redirect_to @season
+    else
+      redirect_to @season, notice: "That season doesn't end until " + @season.end_date.strftime("%B, %e of %Y")
     end
-    @season.has_ended = true
-    @season.save
-    redirect_to @season
   end
 
   def finalize

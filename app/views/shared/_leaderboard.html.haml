@@ -1,0 +1,12 @@
+%table.leaderboard
+  %thead
+    %tr
+      %th Rank
+      %th User
+      %th Score
+  %tbody
+    - users.each_with_index do |(name, score), index|
+      %tr
+        %td= index+1
+        %td= name
+        %td= score

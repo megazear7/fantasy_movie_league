@@ -71,4 +71,47 @@ class User < ActiveRecord::Base
   end
 
 
+
+  def self.most_6_month_seasons_finished
+    {"Test User A" => 5, "Test User B" => 5, "Test User C" => 4, "Test User D" => 4, "Test User E" => 4, "Test User F" => 3, "Test User G" => 3}
+  end
+
+  def self.most_6_month_seasons_won
+    {"Test User A" => 5, "Test User B" => 4, "Test User E" => 4, "Test User C" => 3, "Test User F" => 3}
+  end
+
+  def self.high_score_6_month_season
+    {"Test User A" => 55, "Test User B" => 53, "Test User C" => 52, "Test User D" => 51, "Test User E" => 50}
+  end
+
+  def self.most_points
+    {"Test User A" => 345, "Test User B" => 343, "Test User C" => 336, "Test User D" => 334, "Test User E" => 332}
+  end
+
+  def self.single_season_score_this_year
+    {"Test User A" => 55, "Test User B" => 53, "Test User C" => 52, "Test User D" => 51, "Test User E" => 50}
+  end
+
+  def self.single_6_month_season_score_this_year
+    {"Test User A" => 55, "Test User B" => 53, "Test User C" => 52, "Test User D" => 51, "Test User E" => 50}
+  end
+
+  def self.seasons_finished
+    {"Test User A" => 17, "Test User B" => 16, "Test User C" => 16, "Test User D" => 14, "Test User E" => 11}
+  end
+
+  def self.seasons_won
+    {"Test User A" => 13, "Test User B" => 12, "Test User C" => 12, "Test User D" => 8, "Test User E" => 8}
+  end
+
+  def self.highest_score
+    {"Test User A" => 55, "Test User B" => 53, "Test User C" => 52, "Test User D" => 51, "Test User E" => 50}
+  end
+
+
+
+
+
+
+
 end

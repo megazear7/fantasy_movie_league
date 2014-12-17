@@ -12,4 +12,7 @@ class UserPagesController < ApplicationController
     @friend_request = FriendRequest.new
   end
 
+  def leader_boards
+  end
+
 end
