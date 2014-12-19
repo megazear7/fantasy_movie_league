@@ -8,10 +8,12 @@
   - if params[:action] == 'new'
     = f.input :name
     = f.input :release
+    = f.input :apiid
   - if params[:action] == 'edit'
     = f.input :box_office_actual
     %h6 Name and release date should never need changed. But if you need to you can change them here...
     = f.input :name
     = f.input :release
+    = f.input :apiid
   .actions
     = f.submit 'Save', class: "btn-link"

@@ -29,7 +29,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :movies
+  resources :movies do
+    collection do
+      get :update_revenues
+    end
+  end
 
   get '/users_trophies/:id' => 'user_pages#home', as: :users_trophies
   get '/users' => 'user_pages#index', as: :users_index

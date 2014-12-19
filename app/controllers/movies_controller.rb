@@ -61,6 +61,18 @@ class MoviesController < ApplicationController
     end
   end
 
+  def update_revenues
+    Tmdb::Api.key("7d02ea92c84971ac221022276eb0c848")
+    Movie.all.each do |movie|
+      movie_info = Tmdb::Movie.detail(movie.apiid) 
+      movie.box_office_actual = movie_info.revenue
+      movie.name = movie_info.title
+      movie.release = Date.parse(movie_info.release_date)
+      movie.save
+    end
+    redirect_to movies_url, notice: "All movies have been updated."
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_movie
@@ -72,7 +84,8 @@ class MoviesController < ApplicationController
       params.require(:movie).permit(
         :name,
         :box_office_actual,
-        :release
+        :release,
+        :apiid
       )
     end
 end
