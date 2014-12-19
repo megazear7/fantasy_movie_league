@@ -196,3 +196,11 @@ span.leaderboard {
   overflow-y: scroll;
   background: rgba(19, 127, 148, 0.38);
 }
+
+.movie-info div {
+  padding: 10px;
+}
+
+.movie-info h4 {
+  margin-bottom: 0px;
+}

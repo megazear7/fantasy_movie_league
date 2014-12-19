@@ -10,6 +10,13 @@ class MoviesController < ApplicationController
   # GET /movies/1
   # GET /movies/1.json
   def show
+    Tmdb::Api.key("7d02ea92c84971ac221022276eb0c848")
+    @movie_info = Tmdb::Movie.detail(@movie.apiid) 
+    @movie.box_office_actual = @movie_info.revenue
+    @movie.name = @movie_info.title
+    @movie.release = Date.parse(@movie_info.release_date)
+    @movie.save
+    @casts = Tmdb::Movie.casts(@movie.apiid) 
   end
 
   # GET /movies/new

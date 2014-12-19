@@ -1,16 +1,36 @@
-%h3
-  = @movie.name
-%p
+%div.movie-info
+  %h3
+    = @movie.name
   %div
-    Release Date: 
+    %h4 Release Date: 
     = @movie.release
   %div
-    Box Office: 
-    = @movie.box_office_actual
+    %h4 Box Office: 
+    = number_to_human @movie.box_office_actual
   %div
-    API ID: 
-    = @movie.apiid
+    %h4 Overview:
+    = @movie_info.overview
+  %div
+    %h4 Production Companies:
+    - names = []
+    - @movie_info.production_companies.each do |comp|
+      - names << comp["name"]
+    = names.join(", ")
+  %div
+    %h4 Tag Line:
+    = @movie_info.tagline
+  %div
+    %h4 Budget:
+    = @movie_info.budget
+  %div
+    %h4 Cast
+    - names = []
+    - @casts.each do |cast|
+      - names << cast["name"]
+    = names.join(", ")
 - if current_user.admin?
+  API ID: 
+  = @movie.apiid
   = link_to 'Edit', edit_movie_path(@movie)
   \|
   = link_to 'Back', movies_path
