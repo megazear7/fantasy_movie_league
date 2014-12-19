@@ -18,16 +18,31 @@ class Roster < ActiveRecord::Base
   belongs_to :darkhorse_three, class_name: "Movie"
 
   def score
-    points = 0
-    if self.finalized and not self.season.has_ended # TODO the not needs removed
+    points = {}
+    points["total"] = 0
+    if self.finalized
       (1..10).each do |i|
-        points += points_for i
+        points["total"] += points_for i
+        points[i] = points_for i
       end
-      points += 1 if appears darkhorse_one
-      points += 1 if appears darkhorse_two
-      points += 1 if appears darkhorse_three
-    elsif self.season.has_ended
-      points = self.final_score
+      points["d1"] = 0
+      points["d2"] = 0
+      points["d3"] = 0
+      if appears darkhorse_one
+        points["total"] += 1
+        points["d1"] = 1
+      end
+      if appears darkhorse_two
+        points["total"] += 1
+        points["d2"] = 1
+      end
+      if appears darkhorse_three
+        points["total"] += 1
+        points["d3"] = 1
+      end
+    end
+    if self.season.has_ended
+      points["total"] = self.final_score
     end
     points
   end

@@ -23,7 +23,7 @@
       %tr
         %td= roster.user.name
         - if @season.finalized or roster.user == current_user
-          %td= roster.score
+          %td= roster.score["total"]
           %td= link_to "View Roster", roster
         - else
           %td ???
@@ -40,3 +40,5 @@
   = link_to 'End This Season', end_season_path, class: "btn-link"
 - else
   %span.btn-link-inactive End This Season
+- if @season.finalized
+  = render partial: "shared/actual_top_ten", locals: { season: @season }

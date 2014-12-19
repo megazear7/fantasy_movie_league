@@ -1,3 +1,4 @@
+- score = @roster.score
 %p
   Roster for
   = @roster.user.name
@@ -5,52 +6,71 @@
   = link_to @roster.season.name, @roster.season
 %p 
   Score:
-  = @roster.score
+  = score["total"]
 %h4 Top Movie Picks:
 %table
+  %thead
+    %tr
+      %th Position
+      %th Movie
+      %th Points
   %tbody
     %tr
       %td 1
       %td= movie_choice @roster.movie_one
+      %td= score[1]
     %tr
       %td 2
       %td= movie_choice @roster.movie_two
+      %td= score[2]
     %tr
       %td 3
       %td= movie_choice @roster.movie_three
+      %td= score[3]
     %tr
       %td 4
       %td= movie_choice @roster.movie_four
+      %td= score[4]
     %tr
       %td 5
       %td= movie_choice @roster.movie_five
+      %td= score[5]
     %tr
       %td 6
       %td= movie_choice @roster.movie_six
+      %td= score[6]
     %tr
       %td 7
       %td= movie_choice @roster.movie_seven
+      %td= score[7]
     %tr
       %td 8
       %td= movie_choice @roster.movie_eight
+      %td= score[8]
     %tr
       %td 9
       %td= movie_choice @roster.movie_nine
+      %td= score[9]
     %tr
       %td 10
       %td= movie_choice @roster.movie_ten
+      %td= score[10]
 %h4 Darkhose Movies:
 %table
+  %thead
+    %tr
+      %th Movie
+      %th Points
   %tbody
     %tr
-      %td 1
       %td= movie_choice @roster.darkhorse_one
+      %td= score["d1"]
     %tr
-      %td 2
       %td= movie_choice @roster.darkhorse_two
+      %td= score["d2"]
     %tr
-      %td 3
       %td= movie_choice @roster.darkhorse_three
+      %td= score["d3"]
 %br 
 - if not @roster.finalized
   = link_to 'Finalize', finalize_roster_path(@roster), class: "btn-link"
@@ -58,3 +78,5 @@
   = link_to 'Edit', edit_roster_path(@roster), class: "btn-link"
   \|
 = link_to 'Back', rosters_path, class: "btn-link"
+- if @roster.season.finalized
+  = render partial: "shared/actual_top_ten", locals: { season: @roster.season }
