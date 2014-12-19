@@ -78,7 +78,7 @@ class RostersController < ApplicationController
        @roster.finalized = true
        @roster.save
     end
-    redirect_to @roster
+    redirect_to @roster, notice: "All selections must be made in order to finalize a roster"
   end
 
   private

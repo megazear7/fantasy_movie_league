@@ -17,6 +17,14 @@ class Roster < ActiveRecord::Base
   belongs_to :darkhorse_two, class_name: "Movie"
   belongs_to :darkhorse_three, class_name: "Movie"
 
+  validate :choices_are_unique
+
+  def choices_are_unique
+    ids = [movie_one, movie_two, movie_three, movie_four, movie_five, movie_six, movie_seven, movie_eight, movie_nine, movie_ten, darkhorse_one, darkhorse_two, darkhorse_three]
+    ids.compact!
+    errors.add(:movie_one, "All movies must be unique") if ids.uniq.length != ids.length
+  end
+
   def score
     points = {}
     points["total"] = 0
