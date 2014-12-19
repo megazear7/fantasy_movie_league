@@ -65,6 +65,8 @@ class Roster < ActiveRecord::Base
       5
     elsif appears movie
       3
+    else
+      0
     end
   end
 

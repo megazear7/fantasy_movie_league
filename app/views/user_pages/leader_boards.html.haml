@@ -8,7 +8,6 @@
   %span.leaderboard
     %h4 Major Season High Score
     = render partial: "shared/leaderboard", locals: { users: User.high_score_6_month_season(User.all) }
-
 %div
   %span.leaderboard
     %h4 Total Points Scored
@@ -19,7 +18,6 @@
   %span.leaderboard
     %h4 High Major Season Score This Year
     = render partial: "shared/leaderboard", locals: { users: User.single_6_month_season_score_this_year(User.all) }
-
 %div
   %span.leaderboard
     %h4 Seasons Finished

@@ -187,7 +187,8 @@ span.leaderboard {
   width: 250px;
   height: 250px;
   overflow-y: scroll;
-  background: rgba(19, 127, 148, 0.38);
+  box-shadow: 1px 1px 10px #34c1d3;
+  background: rgba(131,210,213,0.48);
 }
 
 .movie-info div {
