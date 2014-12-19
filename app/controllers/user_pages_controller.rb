@@ -15,4 +15,6 @@ class UserPagesController < ApplicationController
   def leader_boards
   end
 
+  def friends_leader_boards
+  end
 end

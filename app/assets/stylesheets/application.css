@@ -34,6 +34,7 @@ html {
   width: 20%;
   height: 100%;
   position: absolute;
+  overflow-y: auto;
 }
 
 .right-menu {
@@ -51,6 +52,7 @@ html {
   border-width: 1px;
   border-radius: 10px;
   border-color: rgba(51, 61, 161, 1);
+  overflow-y: auto;
 }
 
 .menu-item {

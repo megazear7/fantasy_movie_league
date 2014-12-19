@@ -23,6 +23,7 @@
         = active_link_to "Season Requests", season_requests_path, class: "menu-item"
         = active_link_to "All Users", users_index_path, class: "menu-item"
         = active_link_to "Leader Boards", leader_boards_path, class: "menu-item"
+        = active_link_to "Friends Leader Boards", friends_leader_boards_path, class: "menu-item"
         = active_link_to "Logout", destroy_user_session_path, method: :delete, class: "menu-item"
         = active_link_to "Edit Account", edit_user_registration_path, class: "menu-item"
       - else

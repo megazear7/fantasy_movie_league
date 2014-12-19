@@ -39,5 +39,51 @@
         %td= season.roster_for(@user).score
 - else
   %p None
-
-  
+%div
+  %span
+    %h4 
+      Major Seasons Finished:
+      - score = User.most_6_month_seasons_finished(current_user.me)
+      = score[0] ? score[0][1] : "-"
+  %span
+    %h4 
+      Major Seasons Won:
+      - score = User.most_6_month_seasons_won(current_user.me)
+      = score[0] ? score[0][1] : "-"
+  %span
+    %h4 
+      Major Season High Score:
+      - score = User.high_score_6_month_season(current_user.me)
+      = score[0] ? score[0][1] : "-"
+%div
+  %span
+    %h4 
+      Total Points Scored:
+      - score = User.most_points(current_user.me)
+      = score[0] ? score[0][1] : "-"
+  %span
+    %h4 
+      High Score This Year:
+      - score = User.single_season_score_this_year(current_user.me)
+      = score[0] ? score[0][1] : "-"
+  %span
+    %h4 
+      High Major Season Score This Year:
+      - score = User.single_6_month_season_score_this_year(current_user.me)
+      = score[0] ? score[0][1] : "-"
+%div
+  %span
+    %h4 
+      Seasons Finished:
+      - score = User.seasons_finished(current_user.me)
+      = score[0] ? score[0][1] : "-"
+  %span
+    %h4
+      Seasons Won:
+      - score = User.seasons_won(current_user.me)
+      = score[0] ? score[0][1] : "-"
+  %span
+    %h4 
+      High Score:
+      - score = User.highest_score(current_user.me)
+      = score[0] ? score[0][1] : "-"

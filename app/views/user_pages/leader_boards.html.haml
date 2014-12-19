@@ -1,34 +1,32 @@
 %div
   %span.leaderboard
     %h4 Major Seasons Finished
-    = render partial: "shared/leaderboard", locals: { users: User.most_6_month_seasons_finished }
+    = render partial: "shared/leaderboard", locals: { users: User.most_6_month_seasons_finished(User.all) }
   %span.leaderboard
     %h4 Major Seasons Won
-    = render partial: "shared/leaderboard", locals: { users: User.most_6_month_seasons_won }
+    = render partial: "shared/leaderboard", locals: { users: User.most_6_month_seasons_won(User.all) }
   %span.leaderboard
     %h4 Major Season High Score
-    = render partial: "shared/leaderboard", locals: { users: User.high_score_6_month_season }
+    = render partial: "shared/leaderboard", locals: { users: User.high_score_6_month_season(User.all) }
 
 %div
   %span.leaderboard
     %h4 Total Points Scored
-    = render partial: "shared/leaderboard", locals: { users: User.most_points }
+    = render partial: "shared/leaderboard", locals: { users: User.most_points(User.all) }
   %span.leaderboard
     %h4 High Score This Year
-    = render partial: "shared/leaderboard", locals: { users: User.single_season_score_this_year }
+    = render partial: "shared/leaderboard", locals: { users: User.single_season_score_this_year(User.all) }
   %span.leaderboard
     %h4 High Major Season Score This Year
-    = render partial: "shared/leaderboard", locals: { users: User.single_6_month_season_score_this_year }
+    = render partial: "shared/leaderboard", locals: { users: User.single_6_month_season_score_this_year(User.all) }
 
 %div
   %span.leaderboard
     %h4 Seasons Finished
-    = render partial: "shared/leaderboard", locals: { users: User.seasons_finished }
+    = render partial: "shared/leaderboard", locals: { users: User.seasons_finished(User.all) }
   %span.leaderboard
     %h4 Seasons Won
-    = render partial: "shared/leaderboard", locals: { users: User.seasons_won }
+    = render partial: "shared/leaderboard", locals: { users: User.seasons_won(User.all) }
   %span.leaderboard
     %h4 High Score
-    = render partial: "shared/leaderboard", locals: { users: User.highest_score }
-
-
+    = render partial: "shared/leaderboard", locals: { users: User.highest_score(User.all) }

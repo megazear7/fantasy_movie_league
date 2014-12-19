@@ -14,6 +14,14 @@ class User < ActiveRecord::Base
           association_foreign_key: :friend_user_id
   validates_uniqueness_of :name
 
+  def friends_and_me
+    User.where(id: self.friends.pluck(:id) << self.id)
+  end
+
+  def me
+    User.where(id: self.id)
+  end
+
   def open_friend_requests
     FriendRequest.where(requestee_id: self.id)
   end
@@ -76,16 +84,15 @@ class User < ActiveRecord::Base
     score == winning_score ? true : false
   end
 
-  def self.most_6_month_seasons_finished
-    User.joins(:rosters => :season).where("seasons.end_date - seasons.begin_date > 5").where("seasons.has_ended = true").group("rosters.user_id").order("count_all DESC").count
+  def self.most_6_month_seasons_finished users
+    users.joins(:rosters => :season).where("seasons.end_date - seasons.begin_date > 5").where("seasons.has_ended = true").group("rosters.user_id").order("count_all DESC").count.to_a
   end
 
-  def self.most_6_month_seasons_won
+  def self.most_6_month_seasons_won users
     tmp = {}
-    User.all.each do |user|
+    users.all.each do |user|
       tmp[user.id] = 0
       user.seasons.where("end_date - begin_date > 5").where("seasons.has_ended = true").each do |season|
-        # TODO is this user.won? method working?
         if user.won? season
           tmp[user.id] += 1 
         end
@@ -93,41 +100,52 @@ class User < ActiveRecord::Base
     end
     tmp.delete_if {|id, score| score == 0 }
     tmp.sort_by { |id, score| -score }
+    tmp.to_a
   end
 
-  def self.high_score_6_month_season
-    {1=> 55, 2=> 53, 3=> 52, 4=> 51, 5=> 50}
+  def self.high_score_6_month_season users
+    tmp = Roster.joins(:season).where(user_id: users.pluck(:id)).where("seasons.end_date - seasons.begin_date > 5").where("seasons.has_ended = true").order("final_score DESC").pluck(:user_id, :final_score)
+    tmp.map! { |x| [User.find(x[0]), x[1]] }
   end
 
-  def self.most_points
-    {1=> 345, 2=> 343, 3=> 336, 4=> 334, 5=> 332}
+  def self.most_points users
+    tmp = users.joins(:rosters).group("rosters.user_id").sum("rosters.final_score")
+    tmp.delete_if {|id, score| score == 0 }
+    tmp.sort_by { |id, score| -score }
   end
 
-  def self.single_season_score_this_year
-    {2=> 55, 1=> 53, 5=> 52, 4=> 51, 3=> 50}
+  def self.single_season_score_this_year users
+    tmp = Roster.joins(:season).where(user_id: users.pluck(:id)).where("seasons.end_date >= ? AND seasons.end_date <= ?", Date.today.beginning_of_year, Date.today.end_of_year).where("seasons.has_ended = true").order("final_score DESC").pluck(:user_id, :final_score)
+    tmp.map! { |x| [User.find(x[0]), x[1]] }
   end
 
-  def self.single_6_month_season_score_this_year
-    {5=> 55, 4=> 53, 1=> 52, 2=> 51, 3=> 50}
+  def self.single_6_month_season_score_this_year users
+    tmp = Roster.joins(:season).where(user_id: users.pluck(:id)).where("seasons.end_date >= ? AND seasons.end_date <= ?", Date.today.beginning_of_year, Date.today.end_of_year).where("seasons.end_date - seasons.begin_date > 5").where("seasons.has_ended = true").order("final_score DESC").pluck(:user_id, :final_score)
+    tmp.map! { |x| [User.find(x[0]), x[1]] }
   end
 
-  def self.seasons_finished
-    User.joins(:rosters => :season).where("seasons.has_ended = true").group("rosters.user_id").order("count_all DESC").count
+  def self.seasons_finished users
+    users.joins(:rosters => :season).where("seasons.has_ended = true").group("rosters.user_id").order("count_all DESC").count
   end
 
-  def self.seasons_won
-    {2 => 13, 1 => 12, 4 => 12, 5 => 8, 3 => 8}
+  def self.seasons_won users
+    tmp = {}
+    users.all.each do |user|
+      tmp[user.id] = 0
+      user.seasons.where("seasons.has_ended = true").each do |season|
+        if user.won? season
+          tmp[user.id] += 1 
+        end
+      end
+    end
+    tmp.delete_if {|id, score| score == 0 }
+    tmp.sort_by { |id, score| -score }
+    tmp.to_a
   end
 
-  def self.highest_score
-    ret = {5 => 55, 3 => 53, 4 => 52, 1 => 51, 2 => 50}
-    return ret
+  def self.highest_score users
+    tmp = Roster.joins(:season).where(user_id: users.pluck(:id)).where("seasons.has_ended = true").order("final_score DESC").pluck(:user_id, :final_score)
+    tmp.delete_if {|id, score| score == 0 }
+    tmp.map! { |x| [User.find(x[0]), x[1]] }
   end
-
-
-
-
-
-
-
 end
