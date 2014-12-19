@@ -12,7 +12,7 @@
     - Movie.ordered_movies_all_time.each do |movie|
       %tr
         %td= link_to movie.name, movie
-        %td= movie.release
+        %td= movie.release.strftime("%B %d, %Y")
         %td= number_to_human movie.box_office_actual
         - if current_user.admin?
           %td= link_to 'Edit', edit_movie_path(movie)

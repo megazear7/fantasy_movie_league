@@ -27,6 +27,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 gem 'themoviedb'
+gem 'rest_client'
 
 gem 'devise'
 
