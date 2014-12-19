@@ -44,14 +44,9 @@ html {
   position: absolute;
   left: 20%;
   top: 1%;
-  background: rgba(100,120,60,0.5);
   padding: 2%;
-  background: rgba(120, 154, 155, 0.48);
-  box-shadow: 1px 1px 10px #888888;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 10px;
-  border-color: rgba(51, 61, 161, 1);
+  background: rgba(211, 211, 211, 0.74);
+  box-shadow: 0px 0px 3px #FFFFFF;
   overflow-y: auto;
 }
 
@@ -64,13 +59,11 @@ html {
   width: 80%;
   height: 5%;
   margin: 2% auto 0%;
-  background: rgba(120, 154, 155, 0.48);
   padding: 15px;
-  box-shadow: 1px 1px 10px #888888;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 10px;
-  border-color: rgba(51, 61, 161, 1);
+  background: rgba(211, 211, 211, 0.74);
+  box-shadow: 0px 0px 3px #FFFFFF;
+  overflow-y: auto;
+
 }
 
 .menu-item:hover {
@@ -92,26 +85,24 @@ a.active {
 
 .btn-link:hover {
   outline:none;
-  background: rgba(0, 197, 255, 0.48);
-  box-shadow: 3px 3px 5px #275A84;
-  color: rgb(3, 4, 47);
+  box-shadow: 1px 1px 10px rgb(52, 193, 211);
+  background: rgba(131, 210, 213, 0.48);
+  text-shadow: 2px 2px 5px rgb(24, 157, 239);
 }
 
 .btn-link {
-  outline:none;
+  outline: none;
   margin-top: 5px;
   margin-bottom: 5px;
   display: inline-block;
   background: rgba(42, 221, 226, 0.48);
   padding: 6px;
-  box-shadow: 3px 3px 5px #7B7B90;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 10px;
-  border-color: rgba(51, 61, 161, 1);
+  box-shadow: 0px 0px 5px #7B7B90;
   text-decoration: none;
-  color: rgb(15, 17, 132);
   font-size: 15px;
+  text-shadow: 1px 1px 3px rgb(68, 142, 187);
+  color: black;
+  border-style: none;
 }
 
 .btn-link-inactive {
@@ -119,16 +110,14 @@ a.active {
   margin-top: 5px;
   margin-bottom: 5px;
   display: inline-block;
-  background: rgba(38, 229, 234, 0.18);
+  background: rgba(42, 221, 226, 0.18);
   padding: 6px;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 10px;
-  border-color: rgba(51, 61, 161, 0.25);
+  box-shadow: 0px 0px 5px #7B7B90;
   text-decoration: none;
-  color: rgba(15, 17, 132, 0.29);
   font-size: 15px;
+  color: rgba(15, 17, 132, 0.29);
   cursor: default;
+  border-style: none;
 }
 
 input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focus {
@@ -152,11 +141,11 @@ input[type="email"], input[type="password"], input[type="text"] {
 }
 
 tr:nth-child(odd) {
-  background-color: rgba(156, 165, 164, 0.5);
+  background: rgba(195, 195, 195, 0.1);
 }
 
 tr:nth-child(even) {
-  background-color: rgba(156, 165, 164, 0.5);
+  background: rgba(145, 145, 145, 0.1);
 }
 
 tr:hover {
@@ -170,7 +159,9 @@ td, th {
 }
 
 thead tr {
-  background-color: rgba(58, 132, 142, 0.5) !important;
+  box-shadow: 1px 1px 10px rgb(43, 207, 228) !important;
+  background: rgba(68, 199, 203, 0.48) !important;
+  text-shadow: 2px 2px 5px rgb(24, 157, 239) !important;
 }
 
 .btn-to-link:hover {
@@ -201,6 +192,26 @@ span.leaderboard {
   padding: 10px;
 }
 
-.movie-info h4 {
-  margin-bottom: 0px;
+h1 {
+  margin-bottom: 4px;
+  color: rgb(68, 199, 203);
+  text-shadow: 1px 1px 1px rgb(0, 48, 77);
+}
+
+h2 {
+  color: rgb(68, 199, 203);
+  text-shadow: 1px 1px 1px rgb(0, 48, 77);
+  margin-bottom: 3px;
+}
+
+h3 {
+  color: rgb(0, 0, 0);
+  text-shadow: 1px 1px 1px rgb(68, 199, 203);
+  margin-bottom: 2px;
+}
+
+h4 {
+  color: rgb(0, 0, 0);
+  text-shadow: 1px 1px 1px rgb(68, 199, 203);
+  margin-bottom: 1px;
 }

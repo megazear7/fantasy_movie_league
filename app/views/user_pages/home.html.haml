@@ -16,7 +16,7 @@
     - @user.active_ongoing_seasons.each do |season|
       %tr
         %td= link_to season.name, season
-        %td= season.roster_for(@user).score
+        %td= season.roster_for(@user).score["total"]
 - else
   %p None
 %br
@@ -26,7 +26,7 @@
     - @user.unstarted_seasons.each do |season|
       %tr
         %td= link_to season.name, season
-        %td= season.roster_for(@user).score
+        %td= season.roster_for(@user).score["total"]
 - else
   %p None
 %br
@@ -36,7 +36,7 @@
     - @user.past_seasons.each do |season|
       %tr
         %td= link_to season.name, season
-        %td= season.roster_for(@user).score
+        %td= season.roster_for(@user).score["total"]
 - else
   %p None
 %div

@@ -57,7 +57,7 @@ class User < ActiveRecord::Base
   def total_points
     count = 0
     self.past_seasons.each do |season|
-      count += season.rosters.find_by(user_id: self.id).score
+      count += season.rosters.find_by(user_id: self.id).score["total"]
     end
     count
   end
@@ -72,7 +72,7 @@ class User < ActiveRecord::Base
 
   def best_finished_season_score
     if self.rosters.exists?
-      self.rosters.order("final_score DESC")[0].score
+      self.rosters.order("final_score DESC")[0].score["total"]
     else
       0
     end
