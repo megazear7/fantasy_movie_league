@@ -8,19 +8,19 @@
   = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
   - if params[:action] == 'new'
     = f.association :season
-  = f.association :movie_one, collection: Movie.movies_between(@roster.season.begin_date, @roster.season.end_date).order("name ASC"), prompt: "Choose One"
-  = f.association :movie_two, collection: Movie.movies_between(@roster.season.begin_date, @roster.season.end_date).order("name ASC"), prompt: "Choose One"
-  = f.association :movie_three, collection: Movie.movies_between(@roster.season.begin_date, @roster.season.end_date).order("name ASC"), prompt: "Choose One"
-  = f.association :movie_four, collection: Movie.movies_between(@roster.season.begin_date, @roster.season.end_date).order("name ASC"), prompt: "Choose One"
-  = f.association :movie_five, collection: Movie.movies_between(@roster.season.begin_date, @roster.season.end_date).order("name ASC"), prompt: "Choose One"
-  = f.association :movie_six, collection: Movie.movies_between(@roster.season.begin_date, @roster.season.end_date).order("name ASC"), prompt: "Choose One"
-  = f.association :movie_seven, collection: Movie.movies_between(@roster.season.begin_date, @roster.season.end_date).order("name ASC"), prompt: "Choose One"
-  = f.association :movie_eight, collection: Movie.movies_between(@roster.season.begin_date, @roster.season.end_date).order("name ASC"), prompt: "Choose One"
-  = f.association :movie_nine, collection: Movie.movies_between(@roster.season.begin_date, @roster.season.end_date).order("name ASC"), prompt: "Choose One"
-  = f.association :movie_ten, collection: Movie.movies_between(@roster.season.begin_date, @roster.season.end_date).order("name ASC"), prompt: "Choose One"
-  = f.association :darkhorse_one, collection: Movie.movies_between(@roster.season.begin_date, @roster.season.end_date).order("name ASC"), prompt: "Choose One"
-  = f.association :darkhorse_two, collection: Movie.movies_between(@roster.season.begin_date, @roster.season.end_date).order("name ASC"), prompt: "Choose One"
-  = f.association :darkhorse_three, collection: Movie.movies_between(@roster.season.begin_date, @roster.season.end_date).order("name ASC"), prompt: "Choose One"
+  = f.association :movie_one, collection: Movie.movies_between(@roster.season.begin_date+14, @roster.season.end_date-14).order("name ASC"), prompt: "Choose One"
+  = f.association :movie_two, collection: Movie.movies_between(@roster.season.begin_date+14, @roster.season.end_date-14).order("name ASC"), prompt: "Choose One"
+  = f.association :movie_three, collection: Movie.movies_between(@roster.season.begin_date+14, @roster.season.end_date-14).order("name ASC"), prompt: "Choose One"
+  = f.association :movie_four, collection: Movie.movies_between(@roster.season.begin_date+14, @roster.season.end_date-14).order("name ASC"), prompt: "Choose One"
+  = f.association :movie_five, collection: Movie.movies_between(@roster.season.begin_date+14, @roster.season.end_date-14).order("name ASC"), prompt: "Choose One"
+  = f.association :movie_six, collection: Movie.movies_between(@roster.season.begin_date+14, @roster.season.end_date-14).order("name ASC"), prompt: "Choose One"
+  = f.association :movie_seven, collection: Movie.movies_between(@roster.season.begin_date+14, @roster.season.end_date-14).order("name ASC"), prompt: "Choose One"
+  = f.association :movie_eight, collection: Movie.movies_between(@roster.season.begin_date+14, @roster.season.end_date-14).order("name ASC"), prompt: "Choose One"
+  = f.association :movie_nine, collection: Movie.movies_between(@roster.season.begin_date+14, @roster.season.end_date-14).order("name ASC"), prompt: "Choose One"
+  = f.association :movie_ten, collection: Movie.movies_between(@roster.season.begin_date+14, @roster.season.end_date-14).order("name ASC"), prompt: "Choose One"
+  = f.association :darkhorse_one, collection: Movie.movies_between(@roster.season.begin_date+14, @roster.season.end_date-14).order("name ASC"), prompt: "Choose One"
+  = f.association :darkhorse_two, collection: Movie.movies_between(@roster.season.begin_date+14, @roster.season.end_date-14).order("name ASC"), prompt: "Choose One"
+  = f.association :darkhorse_three, collection: Movie.movies_between(@roster.season.begin_date+14, @roster.season.end_date-14).order("name ASC"), prompt: "Choose One"
   .actions
     = f.submit 'Save', class: 'btn-link'
 %h2
@@ -35,7 +35,7 @@
       %th IMDB
       %th Release
   %tbody
-    - Movie.movies_between(@roster.season.begin_date, @roster.season.end_date).order("name ASC").each do |movie|
+    - Movie.movies_between(@roster.season.begin_date+14, @roster.season.end_date-14).order("name ASC").each do |movie|
       %tr
         %td= link_to movie.name, movie
         - if movie.imdb_id

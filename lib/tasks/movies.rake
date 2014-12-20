@@ -1,6 +1,6 @@
 namespace :movies do
 
-  task add_upoming: :environment do
+  task add_upcoming: :environment do
     Tmdb::Api.key("7d02ea92c84971ac221022276eb0c848")
     Tmdb::Movie.upcoming.each do |movie|
       if not Movie.find_by(apiid: movie.id).present?
@@ -14,7 +14,6 @@ namespace :movies do
       end
     end
   end
-
 
   task add_between: :environment do
 
