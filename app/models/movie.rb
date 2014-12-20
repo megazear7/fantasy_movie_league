@@ -10,7 +10,6 @@ class Movie < ActiveRecord::Base
   end
 
   def self.movies_between begin_date, end_date
-    aa
     Movie.where("release > ? AND release < ?", begin_date, end_date)
   end
 
