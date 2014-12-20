@@ -8,6 +8,9 @@
     %h4 Box Office: 
     = number_to_human @movie.box_office_actual
   %div
+    %h4 IMDB:
+    = link_to "IMDB Page", "http://www.imdb.com/title/" + @movie_info.imdb_id, target: '_blank'
+  %div
     %h4 Overview:
     = @movie_info.overview
   %div

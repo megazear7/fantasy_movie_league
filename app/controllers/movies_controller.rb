@@ -14,6 +14,7 @@ class MoviesController < ApplicationController
     @movie_info = Tmdb::Movie.detail(@movie.apiid) 
     @movie.box_office_actual = @movie_info.revenue
     @movie.name = @movie_info.title
+    @movie.imdb_id = @movie_info.imdb_id
     @movie.release = Date.parse(@movie_info.release_date)
     @movie.save
     @casts = Tmdb::Movie.casts(@movie.apiid) 
@@ -74,6 +75,7 @@ class MoviesController < ApplicationController
       movie_info = Tmdb::Movie.detail(movie.apiid) 
       movie.box_office_actual = movie_info.revenue
       movie.name = movie_info.title
+      movie.imdb_id = movie_info.imdb_id
       movie.release = Date.parse(movie_info.release_date)
       movie.save
     end

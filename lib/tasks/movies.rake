@@ -7,6 +7,7 @@ namespace :movies do
         m = Movie.new
         m.apiid = movie.id
         m.name = movie.title
+        m.imdb_id = movie["imdb_id"]
         m.release = Date.parse(movie.release_date)
         m.box_office_actual = 0
         m.save
@@ -41,6 +42,7 @@ namespace :movies do
             m = Movie.new
             m.apiid = movie["id"]
             m.name = movie["title"]
+            m.imdb_id = movie["imdb_id"]
             m.release = Date.parse(movie["release_date"])
             m.box_office_actual = 0
             m.save
@@ -76,6 +78,7 @@ namespace :movies do
             puts movie["title"]
             m = Movie.new
             m.apiid = movie["id"]
+            m.imdb_id = movie["imdb_id"]
             m.name = movie["title"]
             m.release = Date.parse(movie["release_date"])
             m.box_office_actual = 0
