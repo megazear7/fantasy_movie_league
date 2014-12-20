@@ -9,6 +9,11 @@ class Movie < ActiveRecord::Base
     Movie.where("release > ? AND release < ?", begin_date, end_date).order("box_office_actual DESC")
   end
 
+  def self.movies_between begin_date, end_date
+    aa
+    Movie.where("release > ? AND release < ?", begin_date, end_date)
+  end
+
   def self.ordered_movies_all_time
     Movie.order("box_office_actual DESC")
   end
