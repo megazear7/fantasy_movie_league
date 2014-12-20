@@ -4,8 +4,10 @@
     %tr
       %th Position
       %th Movie
+      %th Revenue
   %tbody
     - Movie.top_ten_for(season.begin_date, season.end_date).each_with_index do |movie, i|
       %tr
         %td= i + 1
         %td= movie.name
+        %td= number_to_human movie.box_office_actual
