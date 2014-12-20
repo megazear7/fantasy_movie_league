@@ -5,11 +5,9 @@
       %ul
         - @roster.errors.full_messages.each do |msg|
           %li= msg
-
   = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
   - if params[:action] == 'new'
     = f.association :season
-
   = f.association :movie_one, prompt: "Choose One"
   = f.association :movie_two, prompt: "Choose One"
   = f.association :movie_three, prompt: "Choose One"
@@ -23,6 +21,20 @@
   = f.association :darkhorse_one, prompt: "Choose One"
   = f.association :darkhorse_two, prompt: "Choose One"
   = f.association :darkhorse_three, prompt: "Choose One"
- 
   .actions
     = f.submit 'Save'
+%h2
+  Movies Between
+  = @roster.season.begin_date.strftime("%B %d, %Y")
+  and
+  = @roster.season.begin_date.strftime("%B %d, %Y")
+%table
+  %thead
+    %tr
+      %th Name
+      %th Release
+  %tbody
+    - Movie.ordered_movies(@roster.season.begin_date, @roster.season.end_date).each do |movie|
+      %tr
+        %td= link_to movie.name, movie
+        %td= movie.release.strftime("%B %d, %Y")
