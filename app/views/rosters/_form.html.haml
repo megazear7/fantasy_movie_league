@@ -38,5 +38,8 @@
     - Movie.movies_between(@roster.season.begin_date, @roster.season.end_date).order("name ASC").each do |movie|
       %tr
         %td= link_to movie.name, movie
-        %td= link_to "IMDB Page", "http://www.imdb.com/title/" + movie.imdb_id, target: '_blank'
+        - if movie.imdb_id
+          %td= link_to "IMDB Page", "http://www.imdb.com/title/" + movie.imdb_id, target: '_blank'
+        - else
+          %td no link
         %td= movie.release.strftime("%B %d, %Y")
