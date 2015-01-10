@@ -10,13 +10,17 @@ class MoviesController < ApplicationController
   # GET /movies/1
   # GET /movies/1.json
   def show
+    @movie.update_revenue 
+
+    # TMDB does not update fast enough :(
     Tmdb::Api.key("7d02ea92c84971ac221022276eb0c848")
     @movie_info = Tmdb::Movie.detail(@movie.apiid) 
-    @movie.box_office_actual = @movie_info.revenue
-    @movie.name = @movie_info.title
-    @movie.imdb_id = @movie_info.imdb_id
-    @movie.release = Date.parse(@movie_info.release_date)
-    @movie.save
+    #@movie.box_office_actual = @movie_info.revenue
+    #@movie.name = @movie_info.title
+    #@movie.imdb_id = @movie_info.imdb_id
+    #@movie.release = Date.parse(@movie_info.release_date)
+    #@movie.save
+
     @casts = Tmdb::Movie.casts(@movie.apiid) 
   end
 
@@ -72,12 +76,7 @@ class MoviesController < ApplicationController
   def update_revenues
     Tmdb::Api.key("7d02ea92c84971ac221022276eb0c848")
     Movie.all.each do |movie|
-      movie_info = Tmdb::Movie.detail(movie.apiid) 
-      movie.box_office_actual = movie_info.revenue
-      movie.name = movie_info.title
-      movie.imdb_id = movie_info.imdb_id
-      movie.release = Date.parse(movie_info.release_date)
-      movie.save
+      movie.update_revenue 
     end
     redirect_to movies_url, notice: "All movies have been updated."
   end

@@ -29,6 +29,8 @@ gem 'spring',        group: :development
 gem 'themoviedb'
 gem 'rest_client'
 
+gem 'nokogiri'
+
 gem 'devise'
 
 gem 'haml-rails'
