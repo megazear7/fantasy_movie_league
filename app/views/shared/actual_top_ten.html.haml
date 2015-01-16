@@ -8,4 +8,4 @@
     - Movie.top_ten_for(@roster.season.begin_date, @roster.season.end_date).each_with_index do |movie, i|
       %tr
         %td= i + 1
-        %td= movie.name
+        %td= movie_choice movie
